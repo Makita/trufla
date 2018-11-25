@@ -1,28 +1,22 @@
+/* eslint-disable import/no-unresolved */
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-class App extends Component {
+import ProductTable from 'Components/ProductTable/product-table';
+
+import style from './app.scss';
+
+export default class App extends Component {
+  state = {
+    page: 1
+  }
+
   render() {
+    const { page } = this.state;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className={style.container}>
+        <ProductTable page={page} />
       </div>
     );
   }
 }
-
-export default App;
