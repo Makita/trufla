@@ -7,6 +7,7 @@ import Pagination from 'Components/Pagination/pagination';
 
 import style from './app.scss';
 
+// This value is used for everything related to how many products are on a page
 const productsPerPage = 20;
 
 export default class App extends Component {
@@ -18,10 +19,20 @@ export default class App extends Component {
     searchFilter: ""
   }
 
+  /**
+   * Perform an initial load so the page doesn't have nothing on it when first
+   * visited.
+   * @returns {void}
+   */
   componentDidMount() {
     this.loadProducts();
   }
 
+  /**
+   * Updates the state to have all the products which will be displayed on the
+   * page. Caching is not utilized.
+   * @returns {void}
+   */
   loadProducts = () => {
     const {
       page,
@@ -44,6 +55,11 @@ export default class App extends Component {
       .then(products => this.setState({ products }));
   }
 
+  /**
+   * When a select option is chosen from the Filters, this sets a state value.
+   * @param {Event} event The Event object as passed to an onChange function.
+   * @returns {void}
+   */
   handleDepartmentFilterChange = (event: Event) => {
     const src = event.target || event.src;
     const value = src.value === "" ? null : src.value
@@ -53,6 +69,11 @@ export default class App extends Component {
     }, this.loadProducts);
   }
 
+  /**
+   * When a select option is chosen from the Filters, this sets a state value.
+   * @param {Event} event The Event object as passed to an onChange function.
+   * @returns {void}
+   */
   handlePromoCodeChange = (event: Event) => {
     const src = event.target || event.src;
     const value = src.value === "" ? null : src.value
@@ -62,6 +83,12 @@ export default class App extends Component {
     }, this.loadProducts)
   }
 
+  /**
+   * When the user makes any text modifications to the field, this sets a state
+   * value.
+   * @param {Event} event The Event object as passed to an onChange function.
+   * @returns {void}
+   */
   handleSearchChange = (event: Event) => {
     const src = event.target || event.src;
 
@@ -70,6 +97,12 @@ export default class App extends Component {
     }, this.loadProducts)
   }
 
+  /**
+   * When the user clicks one of the pagination buttons at the bottom, this
+   * sets the page in state.
+   * @param {number} page The page number that we're changing to.
+   * @returns {void}
+   */
   handlePageChange = (page) => {
     window.history.pushState({}, "", `/${page}`);
 

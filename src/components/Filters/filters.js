@@ -11,6 +11,11 @@ import {
 
 import style from './filters.scss';
 
+/**
+ * Creates an option tag for each element in the data passed.
+ * @param {Object} data The data we'll iterate over to generate the option tags.
+ * @returns {Array<JSX.Element>} An array of option tags in JSX.
+ */
 const SelectOptions = ({ data }) => {
   return Array.from(data).map((item) => {
     // eslint-disable-next-line array-element-newline
@@ -27,12 +32,19 @@ interface FiltersState {
   promoCodes: Object
 }
 
+/**
+ * Generates all the elements at the top that handle filtering of product entries.
+ */
 export default class Filters extends Component<FiltersProps, FiltersState> {
   state = {
     departments: {},
     promoCodes: {}
   }
 
+  /**
+   * These values never change so we only need to query for them the first time.
+   * @returns {void}
+   */
   componentDidMount() {
     fetch('/departments')
       .then(res => res.json())
