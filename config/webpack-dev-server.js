@@ -18,6 +18,16 @@ const options = {
       target: "http://localhost:3000",
       secure: false,
       changeOrigin: true
+    },
+    '/departments': {
+      target: "http://localhost:3000",
+      secure: false,
+      changeOrigin: true
+    },
+    '/promo_codes': {
+      target: "http://localhost:3000",
+      secure: false,
+      changeOrigin: true
     }
   },
   historyApiFallback: true,

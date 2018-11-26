@@ -1,89 +1,72 @@
 /* eslint-disable no-magic-numbers */
 // @flow
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import { Table } from 'react-bootstrap';
-
-const productsPerPage = 20;
 
 const ProductRow = ({
   id,
   name,
   price,
   department,
-  promoCode
+  promoCode,
+  discount
 }: {
   id: number,
   name: string,
   price: number,
   department: Object,
-  promoCode: Object
+  promoCode: Object,
+  discount: number
 }) => {
+  const discounted = price * (1 - (discount / 100));
+  let priceLine = <td>{price.toFixed(2)}</td>;
+
+  if (discount !== 0) priceLine = <td><s>{price.toFixed(2)}</s> {discounted.toFixed(2)}</td>
+
   return (
     <tr>
       <td>{id}</td>
       <td>{name}</td>
-      <td>{price}</td>
+      {priceLine}
       <td>{department}</td>
       <td>{promoCode}</td>
     </tr>
   )
 }
 
-const ProductRows = ({ products, page }) => {
-  const keys = Array.from(
-    Array(productsPerPage).keys(),
-    // eslint-disable-next-line id-length
-    x => x + (productsPerPage * (page - 1)) + 1
-  );
+const ProductRows = ({ products, productsPerPage }) => {
+  if (products.length === 0 || typeof products.data === "object") {
+    return Array.from(Array(productsPerPage).fill().keys()).map((key) => {
+      return (
+        <tr key={`missing${key}`}>
+          <td>#</td>
+          <td>Loading</td>
+          <td>Loading</td>
+          <td>Loading</td>
+          <td>Loading</td>
+        </tr>
+      );
+    });
+  }
 
-  return keys.map((key) => {
-    const product = products[key];
-
-    if (typeof product === "undefined" || typeof product["promo-code"] === "undefined") return null;
-
-    const code = product["promo-code"].code === "nopromo" ? "" : product["promo-code"].code;
+  return products.map((product) => {
+    const code = product.code === "nopromo" ? "" : product.code;
 
     return <ProductRow
+      key={product.id}
       id={product.id}
       name={product.name}
       price={product.price}
-      department={product.department.name}
+      department={product.dept_name}
       promoCode={code}
+      discount={product.discount}
     />;
   });
 }
 
-export default class ProductTable extends Component<{ page: number }, {}> {
-  state = {
-    products: {},
-  }
-
-  componentDidMount() {
-    fetch('/products/1/21')
-      .then(res => res.json())
-      .then(json => this.handleJSON(json.data));
-  }
-
-  handleJSON(data) {
-    // Take each product and add it to an object structured like the state
-    const newValues = data.reduce((accumulator, value) => {
-      return {
-        ...accumulator,
-        [value.id]: value.attributes
-      };
-    }, {})
-
-    // eslint-disable-next-line no-unused-vars
-    this.setState({
-      products: newValues
-    });
-  }
-
+export default class ProductTable extends PureComponent {
   render() {
-    const { products } = this.state;
-    const { page } = this.props;
-
     return (
       <Table striped responsive hover>
         <thead>
@@ -96,7 +79,7 @@ export default class ProductTable extends Component<{ page: number }, {}> {
           </tr>
         </thead>
         <tbody>
-          <ProductRows products={products} page={page} />
+          <ProductRows {...this.props} />
         </tbody>
       </Table>
     );
