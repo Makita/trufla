@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 
 import {
-  Form,
-  FormGroup,
   ControlLabel,
   FormControl,
   Grid,
