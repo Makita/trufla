@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filters should render correctly 1`] = `
+<div
+  className="container"
+>
+  <Grid
+    bsClass="container"
+    componentClass="div"
+    fluid={false}
+  >
+    <Row
+      bsClass="row"
+      componentClass="div"
+    >
+      <Col
+        bsClass="col"
+        componentClass="div"
+        md={2}
+      >
+        <ControlLabel
+          bsClass="control-label"
+          srOnly={false}
+        >
+          Department
+        </ControlLabel>
+      </Col>
+      <Col
+        bsClass="col"
+        componentClass="div"
+        md={2}
+      >
+        <FormControl
+          bsClass="form-control"
+          componentClass="select"
+          placeholder=""
+        >
+          <option
+            value=""
+          >
+            Unfiltered
+          </option>
+          <SelectOptions
+            data={Object {}}
+          />
+        </FormControl>
+      </Col>
+      <Col
+        bsClass="col"
+        componentClass="div"
+        md={2}
+      >
+        <ControlLabel
+          bsClass="control-label"
+          srOnly={false}
+        >
+          Promo Code
+        </ControlLabel>
+      </Col>
+      <Col
+        bsClass="col"
+        componentClass="div"
+        md={2}
+      >
+        <FormControl
+          bsClass="form-control"
+          componentClass="select"
+          placeholder=""
+        >
+          <option
+            value=""
+          >
+            Unfiltered
+          </option>
+          <SelectOptions
+            data={Object {}}
+          />
+        </FormControl>
+      </Col>
+      <Col
+        bsClass="col"
+        componentClass="div"
+        md={2}
+      >
+        <ControlLabel
+          bsClass="control-label"
+          srOnly={false}
+        >
+          Item Search
+        </ControlLabel>
+      </Col>
+      <Col
+        bsClass="col"
+        componentClass="div"
+        md={2}
+      >
+        <FormControl
+          bsClass="form-control"
+          componentClass="input"
+          placeholder="Enter an item name to search for."
+          type="text"
+        />
+      </Col>
+    </Row>
+  </Grid>
+</div>
+`;

@@ -15,7 +15,7 @@ import { Table } from 'react-bootstrap';
  * @param {number} discount A float representing how much of a percent discount is active.
  * @returns {JSX.ELement} A row in the products table.
  */
-const ProductRow = ({
+export const ProductRow = ({
   id,
   name,
   price,
@@ -53,7 +53,7 @@ const ProductRow = ({
  * how many elements are made in the event of an empty products param.
  * @returns {Array<JSX.Element>} The product rows.
  */
-const ProductRows = ({ products, productsPerPage }) => {
+export const ProductRows = ({ products, productsPerPage }) => {
   if (products.length === 0 || typeof products.data === "object") {
     return Array.from(Array(productsPerPage).fill().keys()).map((key) => {
       return (

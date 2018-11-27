@@ -16,7 +16,7 @@ import style from './filters.scss';
  * @param {Object} data The data we'll iterate over to generate the option tags.
  * @returns {Array<JSX.Element>} An array of option tags in JSX.
  */
-const SelectOptions = ({ data }) => {
+export const SelectOptions = ({ data }) => {
   return Array.from(data).map((item) => {
     // eslint-disable-next-line array-element-newline
     return <option key={item.id} value={item.id}>{item.name || item.code}</option>;

@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductRow should render correctly 1`] = `
+<tr>
+  <td>
+    1
+  </td>
+  <td>
+    Epic Product
+  </td>
+  <td>
+    <s>
+      1.00
+    </s>
+     
+    0.50
+  </td>
+  <td />
+  <td />
+</tr>
+`;
+
+exports[`ProductRows should render correctly with data 1`] = `
+<ProductRow
+  department="Marketing"
+  discount={50}
+  id={1}
+  key="1"
+  name="Epic Product"
+  price={1}
+  promoCode=""
+/>
+`;
+
+exports[`ProductRows should render correctly with no data 1`] = `
+<tr
+  key="missing0"
+>
+  <td>
+    #
+  </td>
+  <td>
+    Loading
+  </td>
+  <td>
+    Loading
+  </td>
+  <td>
+    Loading
+  </td>
+  <td>
+    Loading
+  </td>
+</tr>
+`;
+
+exports[`ProductTable should render correctly 1`] = `
+<Table
+  bordered={false}
+  bsClass="table"
+  condensed={false}
+  hover={true}
+  responsive={true}
+  striped={true}
+>
+  <thead>
+    <tr>
+      <th>
+        #
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Price
+      </th>
+      <th>
+        Department
+      </th>
+      <th>
+        Promo Code
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <ProductRows />
+  </tbody>
+</Table>
+`;

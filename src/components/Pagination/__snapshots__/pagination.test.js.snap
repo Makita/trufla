@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination should render correctly 1`] = `
+<Pager
+  bsClass="pager"
+>
+  <PagerItem
+    disabled={false}
+    next={false}
+    onClick={[Function]}
+    previous={true}
+  >
+    ← Previous Page
+  </PagerItem>
+  <PagerItem
+    disabled={false}
+    next={true}
+    onClick={[Function]}
+    previous={false}
+  >
+    Next Page →
+  </PagerItem>
+</Pager>
+`;
