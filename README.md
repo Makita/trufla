@@ -34,3 +34,10 @@ When all of these are dead, delete the image.
 ```
 docker image rm ID_OR_NAME
 ```
+
+## Running without Docker
+
+1. `git clone https://gitlab.com/Makita1/trufla.git`
+2. `cd trufla`
+3. Install everything with `yarn`.
+4. Run `yarn start:dev`.
