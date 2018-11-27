@@ -14,7 +14,5 @@ RUN yarn
 ADD . .
 
 # Expose 3000 for the API server calls
-EXPOSE 3000
-
-EXPOSE 5000
+EXPOSE 3000 5000
 CMD ["yarn", "start:dev"]
